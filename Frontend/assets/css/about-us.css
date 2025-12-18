@@ -1,0 +1,19 @@
+.about-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    line-height: 1.8;
+}
+
+/* headings */
+.about-container h2 {
+    text-align: center;
+    color: #002d72;
+    font-weight: 700;
+}
+
+/* paragraphs */
+.about-container p {
+    color: #444;
+    text-align: justify;
+}

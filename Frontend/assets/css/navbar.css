@@ -1,0 +1,105 @@
+
+/* Fixed header with soft premium glow */
+.premium-header-fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 50;
+    padding: 0;
+    transition: var(--transition);
+}
+
+/* Glassmorphism Navbar */
+.navbar-glassmorphism-enhanced {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+/* Brand */
+.premium-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    color: var(--primary) !important;
+    letter-spacing: 0.5px;
+    transition: var(--transition);
+}
+
+.premium-brand:hover {
+    color: #08306b !important;
+    transform: translateY(-2px);
+}
+
+/* Navigation Links */
+.premium-nav .premium-link {
+    font-weight: 500;
+    color: #444 !important;
+    padding: 0.6rem 1rem !important;
+    margin: 0 4px;
+    border-radius: 12px;
+    position: relative;
+    transition: var(--transition);
+}
+
+/* Hover & Active effect */
+.premium-nav .premium-link:hover,
+.premium-nav .premium-link.active {
+    color: var(--primary) !important;
+    background: rgba(13, 71, 161, 0.12);
+    box-shadow: 0 3px 15px rgba(13, 71, 161, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Underline animation (premium touch) */
+.premium-nav .premium-link::after {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 10px;
+    transform: translateX(-50%);
+    transition: var(--transition);
+}
+
+.premium-nav .premium-link:hover::after,
+.premium-nav .premium-link.active::after {
+    width: 60%;
+}
+
+/* Mobile Nav */
+.navbar-toggler {
+    border: none;
+    box-shadow: none !important;
+}
+
+.navbar-toggler:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Mobile dropdown styling */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background: rgba(255,255,255,0.9);
+        backdrop-filter: blur(20px);
+        border-radius: 12px;
+        padding: 1rem;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        margin-top: 0.5rem;
+    }
+
+    .premium-nav .premium-link {
+        padding: 0.9rem 1rem !important;
+        margin-bottom: 4px;
+        border-radius: 10px;
+    }
+} 

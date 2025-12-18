@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marss - Premium Real Estate</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="premium-body">
+
+  <!-- Fixed Transparent Header - Always Visible on Hero -->
+  <header class="premium-header-fixed">
+    <nav class="navbar navbar-expand-lg navbar-glassmorphism-enhanced">
+      <div class="container">
+        <a class="navbar-brand premium-brand" href="index.html">
+          <i class="bi bi-house-heart-fill me-2"></i>Marss
+        </a>
+        <button class="navbar-toggler premium-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto premium-nav">
+            <li class="nav-item"><a class="nav-link" href="../Frontend/index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../Frontend/about-us.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="../Frontend/contact.html">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="../Frontend/loan.html">Loan</a></li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Services</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="../Frontend/buy.html">House Shifting</a></li>
+                <li><a class="dropdown-item" href="../Frontend/rent.html">Interior</a></li>
+                <li><a class="dropdown-item" href="../Frontend/sell.html">Legal Advice</a></li>
+              </ul>
+            </li>
+        </div>                                                                                       
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section - No Dark/Blue Overlay + Header Visible -->
+  <section id="hero" class="premium-hero">
+    <video autoplay muted loop playsinline class="hero-video-enhanced">
+      <source src="./assets/images/real_estate.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Only a subtle dark overlay for text readability -->
+    <div class="hero-overlay-subtle"></div>
+
+    <div class="container hero-content-enhanced text-white text-center position-relative">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <h1 class=" premium-hero-title animate-fade-in-up">Smarter Living, Starts Here</h1>
+          <p class="lead premium-hero-subtitle animate-fade-in-up delay-1">
+            It's time to find your Dream Home.
+          </p>
+          <h6>The Only Real Estate consulation you will ever need</h6>
+          <div class="d-flex justify-content-center gap-3 mb-5 animate-fade-in-up delay-2">
+            <a href="buy.html" class="btn btn-light btn-lg premium-btn-dark shadow-lg">
+              <i class="bi bi-house-fill me-2"></i>Explore Premium Buys
+            </a>
+            <a href="sell.html" class="btn btn-outline-light btn-lg premium-btn shadow-lg">
+              <i class="bi bi-graph-up me-2"></i>Maximize Your Sale
+            </a>
+            <a href="rent.html" class="btn btn-outline-light btn-lg premium-btn-gold shadow-lg">
+              <i class="bi bi-door-open me-2"></i>Reliable Tenants, Rewarding Returns
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Premium Search Bar -->
+      <div class="row justify-content-center mt-5">
+        <div class="col-xl-10">
+          <div class="premium-search-card animate-slide-in-up delay-3">
+            <div class="search-row">
+              <select class="form-select premium-select" id="locationDropdown">
+                <option value="">Select Location</option>
+              </select>
+
+              <div class="search-group">
+                <i class="bi bi-house-door premium-icon"></i>
+                <select class="form-select premium-select" id="propertyType">
+                  <option value="">Any Property Type</option>
+                  <option value="apartment">Luxury Apartment</option>
+                  <option value="villa">Grand Villa</option>
+                  <option value="plot">Prime Plot</option>
+                </select>
+              </div>
+
+              <div class="search-group">
+                <i class="bi bi-bed premium-icon"></i>
+                <select class="form-select premium-select" id="roomType">
+                  <option value="">Any Configuration</option>
+                  <option value="1">1 RK Studio</option>
+                  <option value="1">1 BHK Compact</option>
+                  <option value="2">2 BHK Family</option>
+                  <option value="3">3 BHK Executive</option>
+                  <option value="4">4 BHK Luxury</option>
+                  <option value="5">5+ BHK Estate</option>
+                </select>
+              </div>
+              <button class="btn premium-search-btn" id="mainSearchButton">
+                <i class="bi bi-arrow-right me-2"></i>Discover Elite Properties
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Search Results Section -->
+<section id="featured-properties" class="premium-section py-5 bg-gradient-light">
+  <div class="container">
+    <h2 class="text-center premium-heading mb-5">
+      Search Results
+    </h2>
+
+    <div class="row g-4" id="properties-container">
+      <!-- JS will inject property cards here -->
+    </div>
+  </div>
+</section>
+
+
+  <!-- Premium Why Choose Us - Grid with Icons -->
+  <section id="why-choose-us" class="premium-section py-5 bg-white">
+    <div class="container">
+      <h2 class="text-center premium-heading mb-5 animate-fade-in">Why Marss Stands Supreme</h2>
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="premium-card h-100 text-center p-4 animate-slide-in-up delay-0">
+            <div class="premium-icon-circle bg-primary text-white mb-3">
+              <i class="bi bi-shield-check"></i>
+            </div>
+            <h5 class="premium-card-title">Unrivaled Expertise</h5>
+            <p class="premium-card-text">Elite advisors crafting bespoke journeys with insider market intelligence.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="premium-card h-100 text-center p-4 animate-slide-in-up delay-1">
+            <div class="premium-icon-circle bg-gold text-primary mb-3">
+              <i class="bi bi-gem"></i>
+            </div>
+            <h5 class="premium-card-title">Exquisite Portfolio</h5>
+            <p class="premium-card-text">Curated gems from skyline penthouses to serene estates, unmatched selection.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="premium-card h-100 text-center p-4 animate-slide-in-up delay-2">
+            <div class="premium-icon-circle bg-secondary text-white mb-3">
+              <i class="bi bi-lightning-charge"></i>
+            </div>
+            <h5 class="premium-card-title">Seamless Symphony</h5>
+            <p class="premium-card-text">AI-driven precision and human touch for an effortless, enchanting experience.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+  <!-- Enhanced FABs -->
+  <div class="fab-container-enhanced">
+    <a href="tel:+912345678900" class="fab premium-fab-primary animate-pulse">
+      <i class="bi bi-telephone me-2"></i>Call Elite
+    </a>
+    <a href="contact.html" class="fab premium-fab-secondary animate-bounce">
+      <i class="bi bi-house-door me-2"></i>Visit Legacy
+    </a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./assets/js/main.js"></script>
+</body>
+
+</html>
