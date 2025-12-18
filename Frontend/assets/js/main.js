@@ -101,40 +101,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
     container.innerHTML = "";
 
-    if (propertyList.length === 0) {
-      container.innerHTML = `
-        <div class="col-12 text-center">
-          <h5 class="text-muted">No properties found</h5>
-        </div>`;
-      return;
-    }
-
     propertyList.forEach(p => {
-      const address = addressList.find(a => a.Id === p.AddressId);
+      const address = addressList.find(a => a.Id === p.AddressLine1);
+
+      // 🔑 Build image URL
+      const imageSrc = `./assets/images/${p.ImageUrl}`;
 
       container.innerHTML += `
-        <div class="col-lg-4 col-md-6">
-          <div class="premium-card h-100">
-            <img src="./assets/images/property-placeholder.jpg"
-                 class="img-fluid rounded-top">
+      <div class="col-lg-4 col-md-6">
+        <div class="premium-card h-100">
 
-            <div class="p-4">
-              <h5>${p.Title}</h5>
-              <p class="text-muted">
-                <i class="bi bi-geo-alt"></i>
-                ${address?.AddressLine1 ?? "N/A"},
-                ${address?.City ?? ""}
-              </p>
-              <p><strong>${p.BedRoom} BHK</strong></p>
+          <img 
+            src="${imageSrc}"
+            class="img-fluid rounded-top"
+            alt="${p.Title}"
+          >
 
-              <a href="buy.html?id=${p.Id}"
-                 class="btn btn-primary w-100">
-                View Details
-              </a>
-            </div>
+          <div class="p-4">
+            <h5>${p.Title}</h5>
+            <p class="text-muted">
+              <i class="bi bi-geo-alt"></i>
+              ${address?.AddressLine1 ?? "N/A"},
+              ${address?.City ?? ""}
+            </p>
+            <p><strong>${p.BedRoom} BHK</strong></p>
+
+            <a href="buy.html?id=${p.Id}" class="btn btn-primary w-100">
+              View Details
+            </a>
           </div>
-        </div>`;
+        </div>
+      </div>`;
     });
   }
+
 
 });

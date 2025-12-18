@@ -10,8 +10,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="./assets/css/loan.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/loan.css">
     <style>
         :root {
             --primary: #0d47a1;
@@ -33,11 +33,13 @@
     <!-- Fixed Premium Header -->
     <header class="premium-header-fixed">
         <nav class="navbar navbar-expand-lg navbar-glassmorphism-enhanced">
-            <div class="container-fluid">
-                <a class="navbar-brand premium-brand fw-bold" href="index.html">
+            <div class="container">
+                <a class="navbar-brand premium-brand" href="index.html">
                     <i class="bi bi-house-heart-fill me-2"></i>Marss
                 </a>
-                <button class="navbar-toggler premium-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <button class="navbar-toggler premium-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -46,135 +48,143 @@
                         <li class="nav-item"><a class="nav-link" href="../Frontend/about-us.html">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="../Frontend/contact.html">Contact</a></li>
                         <li class="nav-item"><a class="nav-link" href="../Frontend/loan.html">Loan</a></li>
+
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Properties</a>
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Services</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="../Frontend/buy.html">Buy</a></li>
-                                <li><a class="dropdown-item" href="../Frontend/rent.html">Rent</a></li>
-                                <li><a class="dropdown-item" href="../Frontend/sell.html">Sell</a></li>
+                                <li><a class="dropdown-item" href="../Frontend/buy.html">House Shifting</a></li>
+                                <li><a class="dropdown-item" href="../Frontend/rent.html">Interior</a></li>
+                                <li><a class="dropdown-item" href="../Frontend/sell.html">Legal Advice</a></li>
                             </ul>
                         </li>
-                    </ul>
                 </div>
             </div>
         </nav>
     </header>
-    
-    <div>
-        <div class="container my-5">
-            <h2 class="text-center mb-4">Our Banking Partners</h2>
+
+    <section class="bank-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Banking Partners</h2>
 
             <div class="row gy-4">
 
-                <!-- Card 1 -->
                 <div class="col-md-4">
-                    <div class="bank-card d-flex align-items-center">
-                        <img src="https://marss.in/wp-content/uploads/2025/03/icici.jpg" class="bank-logo">
+                    <div class="bank-card">
+                        <img src="https://marss.in/wp-content/uploads/2025/03/icici.jpg" class="bank-logo"
+                            alt="ICICI Bank">
                         <div>
-                            <p class="m-0 fw-bold">Interest Rate: 8.5% onwards</p>
-                            <p class="m-0">Max tenure: 35 Years</p>
+                            <p class="fw-bold">Interest Rate: 8.5% onwards</p>
+                            <p>Max tenure: 35 Years</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
                 <div class="col-md-4">
-                    <div class="bank-card d-flex align-items-center">
-                        <img src="https://marss.in/wp-content/uploads/2025/03/axis.jpg" class="bank-logo">
+                    <div class="bank-card">
+                        <img src="https://marss.in/wp-content/uploads/2025/03/axis.jpg" class="bank-logo"
+                            alt="Axis Bank">
                         <div>
-                            <p class="m-0 fw-bold">Interest Rate: 8.5% onwards</p>
-                            <p class="m-0">Max tenure: 35 Years</p>
+                            <p class="fw-bold">Interest Rate: 8.5% onwards</p>
+                            <p>Max tenure: 35 Years</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 3 -->
                 <div class="col-md-4">
-                    <div class="bank-card d-flex align-items-center">
-                        <img src="https://marss.in/wp-content/uploads/2025/03/hdfc.jpg" class="bank-logo">
+                    <div class="bank-card">
+                        <img src="https://marss.in/wp-content/uploads/2025/03/hdfc.jpg" class="bank-logo"
+                            alt="HDFC Bank">
                         <div>
-                            <p class="m-0 fw-bold">Interest Rate: 8.5% onwards</p>
-                            <p class="m-0">Max tenure: 35 Years</p>
+                            <p class="fw-bold">Interest Rate: 8.5% onwards</p>
+                            <p>Max tenure: 35 Years</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 4 -->
                 <div class="col-md-4">
-                    <div class="bank-card d-flex align-items-center">
-                        <img src="https://marss.in/wp-content/uploads/2025/03/bajaj-scaled.jpg" class="bank-logo">
+                    <div class="bank-card">
+                        <img src="https://marss.in/wp-content/uploads/2025/03/bajaj-scaled.jpg" class="bank-logo"
+                            alt="Bajaj Finserv">
                         <div>
-                            <p class="m-0 fw-bold">Interest Rate: 8.5% onwards</p>
-                            <p class="m-0">Max tenure: 35 Years</p>
+                            <p class="fw-bold">Interest Rate: 8.5% onwards</p>
+                            <p>Max tenure: 35 Years</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 5 -->
                 <div class="col-md-4">
-                    <div class="bank-card d-flex align-items-center">
-                        <img src="https://marss.in/wp-content/uploads/2025/03/sbi.jpg" class="bank-logo">
+                    <div class="bank-card">
+                        <img src="https://marss.in/wp-content/uploads/2025/03/sbi.jpg" class="bank-logo" alt="SBI">
                         <div>
-                            <p class="m-0 fw-bold">Interest Rate: 8.5% onwards</p>
-                            <p class="m-0">Max tenure: 35 Years</p>
+                            <p class="fw-bold">Interest Rate: 8.5% onwards</p>
+                            <p>Max tenure: 35 Years</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 6 -->
                 <div class="col-md-4">
-                    <div class="bank-card d-flex align-items-center">
-                        <img src="https://marss.in/wp-content/uploads/2025/03/bob.jpg" class="bank-logo">
+                    <div class="bank-card">
+                        <img src="https://marss.in/wp-content/uploads/2025/03/bob.jpg" class="bank-logo"
+                            alt="Bank of Baroda">
                         <div>
-                            <p class="m-0 fw-bold">Interest Rate: 8.5% onwards</p>
-                            <p class="m-0">Max tenure: 35 Years</p>
+                            <p class="fw-bold">Interest Rate: 8.5% onwards</p>
+                            <p>Max tenure: 35 Years</p>
                         </div>
                     </div>
                 </div>
 
             </div>
         </div>
+    </section>
 
-    </div>
-     <!-- Premium EMI Calculator with Enhanced UI -->
-  <section id="emi-calculator" class="premium-section py-5 bg-white">
-    <div class="container">
-      <h2 class="text-center premium-heading mb-5 animate-fade-in">Elite Financing Insight</h2>
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div class="premium-calculator-card p-5 animate-slide-in-up">
-            <div class="row g-4">
-              <div class="col-md-4">
-                <label class="form-label premium-label">Loan Amount (₹)</label>
-                <div class="input-group">
-                  <span class="input-group-text"><i class="bi bi-currency-rupee"></i></span>
-                  <input type="number" class="form-control premium-input" id="loanAmount" value="5000000">
+    <!-- Premium EMI Calculator with Enhanced UI -->
+    <section id="emi-calculator" class="premium-section py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center premium-heading mb-5 animate-fade-in">Elite Financing Insight</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="premium-calculator-card p-5 animate-slide-in-up">
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <label class="form-label premium-label">Loan Amount (₹)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-currency-rupee"></i></span>
+                                    <input type="number" class="form-control premium-input" id="loanAmount"
+                                        placeholder="enter your amount">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label premium-label">Interest Rate (%)</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control premium-input" id="interestRate"
+                                        placeholder="enter interest rate" step="0.1">
+                                    <span class="input-group-text">%</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label premium-label">Tenure (Years)</label>
+                                <input type="number" class="form-control premium-input" id="loanTenure" placeholder="years">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-lg w-100 mt-4 premium-btn" id="calculateEmi">
+                            <i class="bi bi-calculator me-2"></i>Compute Elite EMI
+                        </button>
+                        <div class="alert alert-info text-center premium-result mt-4" role="alert">
+                            <h5 class="mb-0"><i class="bi bi-graph-up-arrow"></i> Monthly EMI: ₹ <span
+                                    id="emiResult">0</span></h5>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="col-md-4">
-                <label class="form-label premium-label">Interest Rate (%)</label>
-                <div class="input-group">
-                  <input type="number" class="form-control premium-input" id="interestRate" value="7.5" step="0.1">
-                  <span class="input-group-text">%</span>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <label class="form-label premium-label">Tenure (Years)</label>
-                <input type="number" class="form-control premium-input" id="loanTenure" value="20">
-              </div>
             </div>
-            <button class="btn btn-primary btn-lg w-100 mt-4 premium-btn" id="calculateEmi">
-              <i class="bi bi-calculator me-2"></i>Compute Elite EMI
-            </button>
-            <div class="alert alert-info text-center premium-result mt-4" role="alert">
-              <h5 class="mb-0"><i class="bi bi-graph-up-arrow"></i> Monthly EMI: ₹ <span id="emiResult">0</span></h5>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
+     <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- EMI Calculator JS -->
+<script src="assets/js/loan-calculator.js"></script>
+ 
 </body>
 
 </html>
