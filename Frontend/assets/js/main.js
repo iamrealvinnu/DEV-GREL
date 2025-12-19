@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let addresses = [];
   let properties = [];
 
-  fetch("./assets/data/GREL.json")
+  fetch("./assets/data/GREL New.json")
     .then(res => res.json())
     .then(data => {
       addresses = data.Address;
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
     container.innerHTML = "";
 
     propertyList.forEach(p => {
-      const address = addressList.find(a => a.Id === p.AddressLine1);
+      const address = addressList.find(a => a.Id === p.AddressId);
 
       // 🔑 Build image URL
       const imageSrc = `./assets/images/${p.ImageUrl}`;
@@ -113,8 +113,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
           <img 
             src="${imageSrc}"
-            class="img-fluid rounded-top"
+            class="img-fluid rounded-top object-fit-cover"
             alt="${p.Title}"
+            style="height: 220px; width: 100%;"
           >
 
           <div class="p-4">

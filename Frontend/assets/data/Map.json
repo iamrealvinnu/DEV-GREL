@@ -1,0 +1,13 @@
+{
+  "ContactUs": {
+    "Address": "4th Floor, Arya Hub Mall, Hope Farm Circle, Whitefield, Bangalore",
+    "PostalCode": "560066",
+    "PhoneNumber": "+918971448333",
+    "CompanyName": "MARSS REALTY",
+    "OpeningHours": {
+      "Weekdays": "9:30 AM – 8:30 PM",
+      "ClosedOn": "Tuesday"
+    },
+    "LocationMapUrl": "https://www.google.com/maps/place/MARSS+REALTY+DEVELOPERS+PRIVATE+LIMITED/@13.4420851,77.2569531,8.5z/data=!4m14!1m7!3m6!1s0x8457ffe4bb9201ad:0x8bdeaff89ec93245!2sMARSS+REALTY+DEVELOPERS+PRIVATE+LIMITED!8m2!3d13.1167606!4d77.574591!16s%2Fg%2F11xcc28f75!3m5!1s0x8457ffe4bb9201ad:0x8bdeaff89ec93245!8m2!3d13.1167606!4d77.574591!16s%2Fg%2F11xcc28f75?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D"
+  }
+}

@@ -12,7 +12,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
     rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/22e0cee632.js" crossorigin="anonymous"></script>
 </head>
@@ -64,7 +64,7 @@
           <div class="contact-card">
             <i class="bi bi-telephone-fill"></i>
             <h5>Phone</h5>
-            <p>+91 9876543210</p>
+            <p id="phone-display">Loading...</p>
           </div>
         </div>
 
@@ -72,7 +72,7 @@
           <div class="contact-card">
             <i class="bi bi-geo-alt-fill"></i>
             <h5>Location</h5>
-            <p>Bangalore, Karnataka</p>
+            <p id="address-display">contact@marss.com</p>
           </div>
         </div>
 
@@ -80,7 +80,7 @@
           <div class="contact-card">
             <i class="bi bi-envelope-fill"></i>
             <h5>Email</h5>
-            <p>contact@marss.com</p>
+            <p id="email-display">contact@marss.com</p>
           </div>
         </div>
 
@@ -88,16 +88,60 @@
           <div class="contact-card">
             <i class="bi bi-clock-fill"></i>
             <h5>Working Hours</h5>
-            <p>24/7 Customer Support</p>
+            <p id="hours-display">Loading...</p>
           </div>
         </div>
+
+        <div class="row mt-5">
+        <div class="col-12">
+          <div class="map-container">
+            <iframe id="google-map" src="" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+
       </div>
     </div>
   </section>
 
-   <!-- Bootstrap JS -->
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
- 
+
+  <script>
+    const contactData = {
+      "ContactUs": {
+        "Address": "4th Floor, Arya Hub Mall, Hope Farm Circle, Whitefield, Bangalore",
+        "PostalCode": "560066",
+        "PhoneNumber": "+918971448333",
+        "CompanyName": "MARSS REALTY",
+        "OpeningHours": {
+          "Weekdays": "9:30 AM – 8:30 PM",
+          "ClosedOn": "Tuesday"
+        },
+        // We add the Embed URL here
+        "MapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.818461434313!2d77.74940387588828!3d12.983489814541797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae110034b77169%3A0x919c5b8e0ba64ea5!2sArya%20Hub%20Mall!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
+      }
+    };
+
+    function loadContactPage() {
+      const info = contactData.ContactUs;
+
+      // 1. Update Text Fields
+      document.getElementById('phone-display').innerText = info.PhoneNumber;
+      document.getElementById('address-display').innerText = `${info.Address}, ${info.PostalCode}`;
+      document.getElementById('hours-display').innerText = `${info.OpeningHours.Weekdays} 
+      (Closed: ${info.OpeningHours.ClosedOn})`;
+
+      // 2. Update Map
+      const mapIframe = document.getElementById('google-map');
+      if (mapIframe) {
+        mapIframe.src = info.MapEmbedUrl;
+      }
+    }
+
+    // Run when page is ready
+    window.addEventListener('DOMContentLoaded', loadContactPage);
+  </script>
 
 </body>
 

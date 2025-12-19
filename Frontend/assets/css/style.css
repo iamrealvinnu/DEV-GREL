@@ -800,11 +800,11 @@ body.premium-body {
 }
 
 /* Buy Page Property Cards */
-#properties-container .premium-card img {
-  height: 220px;
+#properties-container img-fluid {
   object-fit: cover;
   border-top-left-radius: var(--border-radius);
   border-top-right-radius: var(--border-radius);
+  object-position: center;
 }
 #search-results-summary h6 {
   font-weight: 600;

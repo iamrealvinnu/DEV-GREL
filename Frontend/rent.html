@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marss - Lease Luxuries</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet">
@@ -28,12 +28,13 @@
     <!-- Fixed Premium Header -->
     <header class="premium-header-fixed">
         <nav class="navbar navbar-expand-lg navbar-glassmorphism-enhanced">
-            <div class="container-fluid">
-                <a class="navbar-brand premium-brand fw-bold" href="index.html">
+            <div class="container">
+                <a class="navbar-brand premium-brand" href="index.html">
                     <i class="bi bi-house-heart-fill me-2"></i>Marss
                 </a>
                 <button class="navbar-toggler premium-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav">
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -42,15 +43,16 @@
                         <li class="nav-item"><a class="nav-link" href="../Frontend/about-us.html">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="../Frontend/contact.html">Contact</a></li>
                         <li class="nav-item"><a class="nav-link" href="../Frontend/loan.html">Loan</a></li>
+
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Properties</a>
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Services</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="../Frontend/buy.html">Buy</a></li>
-                                <li><a class="dropdown-item" href="../Frontend/rent.html">Rent</a></li>
-                                <li><a class="dropdown-item" href="../Frontend/sell.html">Sell</a></li>
+                                <li><a class="dropdown-item" href="../Frontend/buy.html">House Shifting</a></li>
+                                <li><a class="dropdown-item" href="../Frontend/rent.html">Interior</a></li>
+                                <li><a class="dropdown-item" href="../Frontend/sell.html">Legal Advice</a></li>
+                                <li><a class="dropdown-item" href="../Frontend/sell.html">Property Management</a></li>
                             </ul>
                         </li>
-                    </ul>
                 </div>
             </div>
         </nav>
@@ -96,234 +98,52 @@
         </div>
     </section>
 
-    <!-- Main Content - Perfect Spacing -->
-    <main class="py-5" style="background: #f8f9fa; margin-top: -1px;">
-        <div class="container py-5">
-            <div class="row g-5">
-                <!-- Elegant Sidebar Filters -->
+    <main class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+
+                <!-- ========== LEFT SIDEBAR FILTERS ========== -->
                 <div class="col-lg-3">
-                    <div class="bg-white rounded-4 shadow-lg p-4 sticky-top" style="top: 100px;">
-                        <h4 class="fw-bold text-primary mb-4">
-                            <i class="bi bi-funnel-fill me-2"></i>Curate Your Retreat
-                        </h4>
-                        <form>
-                            <div class="mb-4">
-                                <label class="form-label fw-semibold">Location</label>
-                                <select class="form-select form-select-lg rounded-3">
-                                    <option>All Locations</option>
-                                    <option>Koramangala</option>
-                                    <option>Indiranagar</option>
-                                    <option>Whitefield</option>
-                                    <option>Jayanagar</option>
-                                </select>
-                            </div>
-                            <div class="mb-4">
-                                <label class="form-label fw-semibold">Property Type</label>
-                                <select class="form-select form-select-lg rounded-3">
-                                    <option>All Types</option>
-                                    <option>Luxury Apartment</option>
-                                    <option>Serviced Apartment</option>
-                                    <option>Independent House</option>
-                                    <option>Penthouse</option>
-                                </select>
-                            </div>
-                            <div class="mb-4">
-                                <label class="form-label fw-semibold">Configuration</label>
-                                <select class="form-select form-select-lg rounded-3">
-                                    <option>Any</option>
-                                    <option>1 BHK</option>
-                                    <option>2 BHK</option>
-                                    <option>3 BHK</option>
-                                    <option>4+ BHK</option>
-                                </select>
-                            </div>
-                            <div class="mb-4">
-                                <label class="form-label fw-semibold">Monthly Rent</label>
-                                <div class="range-slider">
-                                    <input type="range" class="form-range" min="30" max="500" value="150">
-                                    <div class="d-flex justify-content-between small text-muted mt-2">
-                                        <span>₹30K</span>
-                                        <span>₹5L+</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-lg w-100 rounded-pill shadow-lg">
-                                <i class="bi bi-search me-2"></i>Discover Sanctuaries
-                            </button>
-                        </form>
-                    </div>
-                </div>
+                    <div class="bg-white p-4 rounded shadow sticky-top" style="top:90px">
+                        <h5 class="mb-3">Filters</h5>
 
-                <!-- Property Grid -->
-                <div class="col-lg-9">
-                    <div class="row g-4">
-                        <!-- Property 1 -->
-                        <div class="col-md-6">
-                            <div
-                                class="premium-property-card h-100 bg-white rounded-4 shadow-lg overflow-hidden animate-slide-in-up">
-                                <div class="position-relative">
-                                    <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=500&fit=crop"
-                                        class="w-100" style="height: 280px; object-fit: cover;" alt="Apartment">
-                                    <div class="position-absolute top-0 start-0 p-3">
-                                        <span class="badge bg-success fs-6 px-3 py-2 rounded-pill">Available Now</span>
-                                    </div>
-                                    <button
-                                        class="position-absolute top-0 end-0 m-3 btn btn-white rounded-circle shadow-lg premium-heart">
-                                        <i class="bi bi-heart"></i>
-                                    </button>
-                                </div>
-                                <div class="p-4">
-                                    <h5 class="fw-bold text-dark mb-2">The Aria Residences</h5>
-                                    <p class="text-muted mb-3">
-                                        <i class="bi bi-geo-alt me-1"></i> Indiranagar, Bangalore
-                                    </p>
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <span class="text-gold fw-bold fs-5">₹1.45L / mo</span>
-                                        <span class="text-muted">3 BHK • 2100 sq ft</span>
-                                    </div>
-                                    <a href="#" class="btn btn-outline-primary w-100 rounded-pill">
-                                        <i class="bi bi-eye me-2"></i>Schedule Viewing
-                                    </a>
-                                </div>
-                            </div>
+                        <div class="mb-3">
+                            <label>Location</label>
+                            <select id="locationFilter" class="form-select">
+                                <option value="">All Locations</option>
+                            </select>
                         </div>
 
-                        <!-- Property 2 -->
-                        <div class="col-md-6">
-                            <div
-                                class="premium-property-card h-100 bg-white rounded-4 shadow-lg overflow-hidden animate-slide-in-up delay-1">
-                                <div class="position-relative">
-                                    <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&h=500&fit=crop"
-                                        class="w-100" style="height: 280px; object-fit: cover;" alt="House">
-                                    <div class="position-absolute top-0 start-0 p-3">
-                                        <span class="badge bg-primary fs-6 px-3 py-2 rounded-pill">Fully
-                                            Furnished</span>
-                                    </div>
-                                    <button
-                                        class="position-absolute top-0 end-0 m-3 btn btn-white rounded-circle shadow-lg premium-heart">
-                                        <i class="bi bi-heart-fill text-danger"></i>
-                                    </button>
-                                </div>
-                                <div class="p-4">
-                                    <h5 class="fw-bold text-dark mb-2">Villa Serenity</h5>
-                                    <p class="text-muted mb-3">
-                                        <i class="bi bi-geo-alt me-1"></i> Whitefield, Bangalore
-                                    </p>
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <span class="text-gold fw-bold fs-5">₹2.8L / mo</span>
-                                        <span class="text-muted">4 BHK • 4200 sq ft</span>
-                                    </div>
-                                    <a href="#" class="btn btn-outline-primary w-100 rounded-pill">
-                                        <i class="bi bi-eye me-2"></i>Schedule Viewing
-                                    </a>
-                                </div>
-                            </div>
+                        <div class="mb-3">
+                            <label>BHK</label>
+                            <select id="bhkFilter" class="form-select">
+                                <option value="">Any</option>
+                            </select>
                         </div>
 
-                        <!-- Property 3 -->
-                        <div class="col-md-6">
-                            <div
-                                class="premium-property-card h-100 bg-white rounded-4 shadow-lg overflow-hidden animate-slide-in-up delay-2">
-                                <div class="position-relative">
-                                    <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=500&fit=crop"
-                                        class="w-100" style="height: 280px; object-fit: cover;" alt="Studio">
-                                    <div class="position-absolute top-0 start-0 p-3">
-                                        <span class="badge bg-info text-white fs-6 px-3 py-2 rounded-pill">Studio
-                                            Living</span>
-                                    </div>
-                                    <button
-                                        class="position-absolute top-0 end-0 m-3 btn btn-white rounded-circle shadow-lg premium-heart">
-                                        <i class="bi bi-heart"></i>
-                                    </button>
-                                </div>
-                                <div class="p-4">
-                                    <h5 class="fw-bold text-dark mb-2">The Minimalist Muse</h5>
-                                    <p class="text-muted mb-3">
-                                        <i class="bi bi-geo-alt me-1"></i> Koramangala, Bangalore
-                                    </p>
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <span class="text-gold fw-bold fs-5">₹68K / mo</span>
-                                        <span class="text-muted">1 BHK • 750 sq ft</span>
-                                    </div>
-                                    <a href="#" class="btn btn-outline-primary w-100 rounded-pill">
-                                        <i class="bi bi-eye me-2"></i>Schedule Viewing
-                                    </a>
-                                </div>
-                            </div>
+                        <div class="mb-3">
+                            <label>Furnishing</label>
+                            <select id="furnishingFilter" class="form-select">
+                                <option value="">All</option>
+                            </select>
                         </div>
-
-                        <!-- Property 4 -->
-                        <div class="col-md-6">
-                            <div
-                                class="premium-property-card h-100 bg-white rounded-4 shadow-lg overflow-hidden animate-slide-in-up delay-3">
-                                <div class="position-relative">
-                                    <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=500&fit=crop"
-                                        class="w-100" style="height: 280px; object-fit: cover;" alt="Penthouse">
-                                    <div class="position-absolute top-0 start-0 p-3">
-                                        <span class="badge bg-warning text-dark fs-6 px-3 py-2 rounded-pill">Sky
-                                            Palace</span>
-                                    </div>
-                                    <button
-                                        class="position-absolute top-0 end-0 m-3 btn btn-white rounded-circle shadow-lg premium-heart">
-                                        <i class="bi bi-heart"></i>
-                                    </button>
-                                </div>
-                                <div class="p-4">
-                                    <h5 class="fw-bold text-dark mb-2">The Cloud Penthouse</h5>
-                                    <p class="text-muted mb-3">
-                                        <i class="bi bi-geo-alt me-1"></i> UB City, Bangalore
-                                    </p>
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <span class="text-gold fw-bold fs-5">₹4.2L / mo</span>
-                                        <span class="text-muted">4 BHK • 4800 sq ft</span>
-                                    </div>
-                                    <a href="#" class="btn btn-outline-primary w-100 rounded-pill">
-                                        <i class="bi bi-eye me-2"></i>Schedule Viewing
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="text-center mt-5">
-                        <button class="btn btn-outline-primary btn-lg px-5 rounded-pill">
-                            Explore More Sanctuaries <i class="bi bi-arrow-down ms-2"></i>
+                        <button class="btn btn-primary w-100" id="apply-filters">
+                            Apply Filters
                         </button>
                     </div>
                 </div>
+
+                <!-- ========== RIGHT PROPERTY GRID ========== -->
+                <div class="col-lg-9">
+                    <div class="row g-4" id="rent-properties-container"></div>
+                </div>
+
             </div>
         </div>
     </main>
 
-    <!-- Premium Footer -->
-    <footer class="premium-footer bg-dark text-white py-6">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <h5 class="premium-footer-title"><i class="bi bi-house-heart-fill me-2"></i>Marss Elite</h5>
-                    <p class="text-white-50">Where extraordinary properties meet extraordinary buyers.</p>
-                </div>
-                <div class="col-lg-4">
-                    <h6 class="text-gold">Quick Links</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="buy.html" class="text-white-50">Buy Premium</a></li>
-                        <li><a href="rent.html" class="text-white-50">Lease Luxuries</a></li>
-                        <li><a href="services.html" class="text-white-50">Concierge</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-4">
-                    <h6 class="text-gold">Contact</h6>
-                    <p class="mb-1"><i class="bi bi-geo-alt me-2"></i>123 Legacy Avenue, Bangalore</p>
-                    <p class="mb-1"><i class="bi bi-telephone me-2"></i>+91 98765 43210</p>
-                    <p><i class="bi bi-envelope me-2"></i>elite@marss.com</p>
-                </div>
-            </div>
-            <hr class="bg-white opacity-10">
-            <div class="text-center text-white-50">
-                © 2025 Marss. Crafted for timeless legacies.
-            </div>
-        </div>
-    </footer>
+
+
 
     <!-- Floating Elite Buttons -->
     <div class="fab-container-enhanced">
@@ -336,7 +156,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="assets/js/rent.js"></script>
 </body>
 
 </html>

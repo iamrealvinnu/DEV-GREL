@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* -----------------------------
      Load Property Data
   ----------------------------- */
-  fetch("./assets/data/GREL.json")
+  fetch("./assets/data/GREL New.json")
     .then(res => res.json())
     .then(data => {
       properties = data.Property;
@@ -102,11 +102,18 @@ document.addEventListener("DOMContentLoaded", () => {
     list.forEach(p => {
       const address = addresses.find(a => a.Id === p.AddressId);
 
+       // 🔑 Build image URL
+      const imageSrc = `./assets/images/${p.ImageUrl}`;
+
       container.innerHTML += `
         <div class="col-lg-4 col-md-6">
           <div class="premium-card h-100">
-            <img src="./assets/images/property-placeholder.jpg"
-                 class="img-fluid rounded-top">
+            <img 
+            src="${imageSrc}"
+            class="img-fluid rounded-top object-fit-cover"
+            alt="${p.Title}"
+            style="height: 220px; width: 100%;"
+          >
 
             <div class="p-4">
               <h5>${p.Title}</h5>
@@ -116,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
               </p>
               <p><strong>${p.BedRoom} BHK</strong></p>
 
-              <a href="buy.html?id=${p.Id}"
+              <a href="Form.html?id=${p.Id}"
                  class="btn btn-primary w-100">
                 View Details
               </a>
