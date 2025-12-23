@@ -1,140 +1,133 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-  /* ------------------------------
-     Load Navbar Component
-  --------------------------------*/
-  fetch("../components/navbar.html")
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById("navbar").innerHTML = data;
-    });
-
-  /* ------------------------------
-     Load Property JSON
-  --------------------------------*/
   let addresses = [];
   let properties = [];
+  let listings = [];
 
+  // Fetch data and initialize the page
   fetch("./assets/data/GREL New.json")
-    .then(res => res.json())
-    .then(data => {
+    .then((res) => res.json())
+    .then((data) => {
       addresses = data.Address;
       properties = data.Property;
+      listings = data.PropertyListing;
 
-      populateLocationDropdown(addresses);
-      renderProperties(properties, addresses);
+      // Initial render of all properties
+      renderProperties(properties, addresses, listings, true);
 
-      attachSearchHandler(); // 👈 important
+      // Attach search handlers
+      attachSearchHandlers();
     })
-    .catch(err => console.error("JSON load error:", err));
+    .catch((err) => console.error("JSON load error:", err));
 
-  /* ------------------------------
-     Populate Location Dropdown
-  --------------------------------*/
-  function populateLocationDropdown(addressList) {
-    const dropdown = document.getElementById("locationDropdown");
-    if (!dropdown) return;
-
-    dropdown.innerHTML = `<option value="">Select Location</option>`;
-
-    const uniqueLocations = [
-      ...new Set(addressList.map(a => a.AddressLine1))
-    ];
-
-    uniqueLocations.forEach(loc => {
-      const option = document.createElement("option");
-      option.value = loc;
-      option.textContent = loc;
-      dropdown.appendChild(option);
-    });
-  }
-
-  /* ------------------------------
-     Attach Search Handler SAFELY
-  --------------------------------*/
-  function attachSearchHandler() {
+  /**
+   * Attaches event listeners to all search filter dropdowns and the search button.
+   */
+  function attachSearchHandlers() {
     const searchBtn = document.getElementById("mainSearchButton");
-    const dropdown = document.getElementById("locationDropdown");
 
-    if (!searchBtn || !dropdown) return;
+    if (searchBtn) {
+      searchBtn.addEventListener("click", () => {
+        const location = document.getElementById("searchLocation").value;
+        const configuration = document.getElementById("searchConfiguration").value;
+        const propertyType = document.getElementById("searchPropertyType").value;
+        const toilets = document.getElementById("searchToilet").value;
+        const balcony = document.getElementById("searchBalcony").value;
 
-    searchBtn.addEventListener("click", () => {
-      filterByLocation(dropdown.value);
-    });
+        const queryParams = new URLSearchParams();
+        if(location) queryParams.append('location', location);
+        if(configuration) queryParams.append('configuration', configuration);
+        if(propertyType) queryParams.append('propertyType', propertyType);
+        if(toilets) queryParams.append('toilets', toilets);
+        if(balcony) queryParams.append('balcony', balcony);
 
-    // ✅ Optional: auto-search on change
-    dropdown.addEventListener("change", () => {
-      filterByLocation(dropdown.value);
-    });
-  }
-
-  /* ------------------------------
-     Filter Logic
-  --------------------------------*/
-  function filterByLocation(selectedLocation) {
-    if (!selectedLocation) {
-      renderProperties(properties, addresses);
-      return;
+        window.location.href = `search-results.html?${queryParams.toString()}`;
+      });
     }
-
-    const matchedAddressIds = addresses
-      .filter(a => a.AddressLine1 === selectedLocation)
-      .map(a => a.Id);
-
-    const filteredProperties = properties.filter(p =>
-      matchedAddressIds.includes(p.AddressId)
-    );
-
-    renderProperties(filteredProperties, addresses);
-
-    document
-      .getElementById("featured-properties")
-      ?.scrollIntoView({ behavior: "smooth" });
   }
 
-  /* ------------------------------
-     Render Properties
-  --------------------------------*/
-  function renderProperties(propertyList, addressList) {
+  /**
+   * Renders the property cards into the container.
+   * @param {Array} propertyList - The list of properties to render.
+   * @param {Array} addressList - The list of addresses.
+   * @param {Array} listingList - The list of listings.
+   * @param {boolean} isFeatured - Whether to display only a limited number of featured properties.
+   */
+  function renderProperties(propertyList, addressList, listingList, isFeatured = false) {
     const container = document.getElementById("properties-container");
     if (!container) return;
 
     container.innerHTML = "";
 
-    propertyList.forEach(p => {
-      const address = addressList.find(a => a.Id === p.AddressId);
+    if (propertyList.length === 0) {
+      container.innerHTML = `<div class="col-12"><p class="text-center">No properties found matching your criteria.</p></div>`;
+      return;
+    }
 
-      // 🔑 Build image URL
-      const imageSrc = `./assets/images/${p.ImageUrl}`;
+    const propertiesToRender = isFeatured ? propertyList.slice(0, 6) : propertyList;
+    console.log(`Rendering ${propertiesToRender.length} properties. isFeatured: ${isFeatured}`);
+
+
+    propertiesToRender.forEach((p) => {
+      const address = addressList.find((a) => a.Id === p.AddressId);
+      const listing = listingList.find((l) => l.PropertyId === p.Id);
+      const imageSrc = p.ImageUrl ? `./assets/images/${p.ImageUrl}` : 'https://via.placeholder.com/300x200.png?text=Image+Not+Available';
 
       container.innerHTML += `
-      <div class="col-lg-4 col-md-6">
-        <div class="premium-card h-100">
-
-          <img 
-            src="${imageSrc}"
-            class="img-fluid rounded-top object-fit-cover"
-            alt="${p.Title}"
-            style="height: 220px; width: 100%;"
-          >
-
-          <div class="p-4">
-            <h5>${p.Title}</h5>
-            <p class="text-muted">
-              <i class="bi bi-geo-alt"></i>
-              ${address?.AddressLine1 ?? "N/A"},
-              ${address?.City ?? ""}
-            </p>
-            <p><strong>${p.BedRoom} BHK</strong></p>
-
-            <a href="buy.html?id=${p.Id}" class="btn btn-primary w-100">
-              View Details
-            </a>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card property-card h-100">
+            <img 
+              src="${imageSrc}"
+              class="card-img-top"
+              alt="${p.PropertyName}"
+              style="height: 220px; object-fit: cover;"
+              onerror="this.onerror=null;this.src='https://via.placeholder.com/300x200.png?text=Image+Not+Available';"
+            >
+            <div class="card-body">
+              <h5 class="card-title">${p.PropertyName}</h5>
+              <p class="card-text text-muted small">
+                <i class="bi bi-geo-alt-fill me-2"></i>
+                ${address?.AddressLine1 ?? "N/A"}, ${address?.City ?? ""}
+              </p>
+              <div class="row text-center my-3">
+                <div class="col">
+                  <i class="bi bi-building"></i>
+                  <div>${p.BedRoom} BHK</div>
+                </div>
+                <div class="col">
+                  <i class="bi bi-bounding-box"></i>
+                  <div>${p.SBA} sq.ft</div>
+                </div>
+                <div class="col">
+                  <i class="bi bi-droplet"></i>
+                  <div>${p.Toilet} Baths</div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <h5 class="fw-bold mb-0">₹ ${
+                  listing ? (listing.Price / 100000).toFixed(1) + " L" : "Price on request"
+                }</h5>
+                <a href="buy-details.html?id=${
+                  p.Id
+                }" class="btn btn-primary">
+                  View Details
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>`;
+        </div>`;
     });
   }
 
+  // Initial render of all properties
+  renderProperties(properties, addresses, listings, true);
 
+  // Load footer
+  fetch("./components/footer.html")
+    .then((res) => res.text())
+    .then((data) => {
+      const footerContainer = document.getElementById("footer-container");
+      if (footerContainer) {
+        footerContainer.innerHTML = data;
+      }
+    });
 });

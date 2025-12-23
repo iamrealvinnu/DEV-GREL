@@ -1,130 +1,160 @@
-let allProperties = [];
+document.addEventListener("DOMContentLoaded", () => {
+  let properties = []; // This will hold the combined RentalProperty with Listing details
+  let addresses = [];
 
-// ================= FETCH & MERGE JSON =================
-fetch("./assets/data/Rent.json")
-  .then(res => res.json())
-  .then(data => {
-    const { RentalProperty, RentalListing } = data;
+  Promise.all([
+    fetch("./assets/data/Rent.json").then(res => res.json()),
+    fetch("./assets/data/GREL New.json").then(res => res.json()) // Fetch GREL New.json for addresses
+  ])
+  .then(([rentData, grelNewData]) => {
+    const { RentalProperty, RentalListing } = rentData;
+    addresses = grelNewData.Address; // Addresses from GREL New.json
 
-    allProperties = RentalProperty.map(prop => {
+    // Combine RentalProperty with their corresponding RentalListing and Address details
+    properties = RentalProperty.map(prop => {
       const listing = RentalListing.find(l => l.PropertyId === prop.Id);
-      return { ...prop, ...listing };
+      // Find address details for the rental property
+      const addressDetail = addresses.find(addr => addr.Id === prop.AddressId);
+      return { ...prop, ...listing, ...addressDetail, ListingType: "Rent" }; // Merge all relevant data
     });
-
-    populateFilters(allProperties);
-    renderRentProperties(allProperties);
+    
+    // Initial render of all rental properties
+    filterProperties();
+    // Attach search handlers
+    attachSearchHandlers();
   })
   .catch(err => console.error("JSON Load Error:", err));
 
+  function attachSearchHandlers() {
+    const searchBtn = document.getElementById("mainSearchButton");
+    if (searchBtn) {
+      searchBtn.addEventListener("click", filterProperties);
+    }
+    
+    const filters = [
+      "searchLocation",
+      "searchConfiguration",
+      "searchPropertyType",
+      "searchToilet",
+      "searchBalcony",
+    ];
 
-// ================= RENDER PROPERTIES =================
-function renderRentProperties(list) {
-  const container = document.getElementById("rent-properties-container");
-  container.innerHTML = "";
-
-  if (!list.length) {
-    container.innerHTML = `<p class="text-center text-muted">No properties found</p>`;
-    return;
+    filters.forEach((filterId) => {
+      const dropdown = document.getElementById(filterId);
+      if (dropdown) {
+        dropdown.addEventListener("change", filterProperties);
+      }
+    });
   }
 
-  list.forEach(p => {
-    const deposit = p.Deposit
-      ? `₹${p.Deposit.toLocaleString()}`
-      : "Contact for Deposit";
+  function filterProperties() {
+    const location = document.getElementById("searchLocation").value;
+    const configuration = document.getElementById("searchConfiguration").value;
+    const propertyType = document.getElementById("searchPropertyType").value;
+    const toilets = document.getElementById("searchToilet").value;
+    const balcony = document.getElementById("searchBalcony").value;
 
-    container.innerHTML += `
-      <div class="col-md-6">
-        <div class="card shadow h-100">
+    let filteredProperties = properties;
 
-          <img src="assets/images/${p.ImageUrl}"
-               class="card-img-top"
-               style="height:250px;object-fit:cover"
-               onerror="this.src='assets/images/property-placeholder.jpg'">
+    if (location) {
+        // Filter based on Locality from the merged address data in 'properties'
+        filteredProperties = filteredProperties.filter(p => p.Locality === location);
+    }
 
-          <div class="card-body">
-            <h5>${p.PropertyName}</h5>
+    if (configuration) {
+      filteredProperties = filteredProperties.filter(
+        (p) => p.BedRoom.toString() === configuration
+      );
+    }
 
-            <p class="text-muted mb-1">
-              <i class="bi bi-geo-alt"></i>
-              ${formatLocation(p.AddressId)}
-            </p>
+    if (propertyType) {
+        if (propertyType === "Apartment") {
+            filteredProperties = filteredProperties.filter(p => !p.PropertyName.includes("Villa") && !p.PropertyName.includes("Independent House") && !p.PropertyName.includes("Penthouse"));
+        } else if (propertyType) {
+            filteredProperties = filteredProperties.filter(p => p.PropertyName.toLowerCase().includes(propertyType.toLowerCase()));
+        }
+    }
 
-            <small>${p.BedRoom} BHK • ${p.FurnishingStatus}</small>
+    if (toilets) {
+      filteredProperties = filteredProperties.filter(
+        (p) => p.Toilet.toString() === toilets
+      );
+    }
 
-            <div class="d-flex justify-content-between mt-3">
-              <strong>₹${p.Price.toLocaleString()} / mo</strong>
-              <span>${p.SBA} sq ft</span>
-            </div>
+    if (balcony) {
+      filteredProperties = filteredProperties.filter(
+        (p) => p.Balcony.toString() === balcony
+      );
+    }
 
-            <div class="mt-2 small">
+    renderRentProperties(filteredProperties);
+  }
+
+  function renderRentProperties(list) {
+    const container = document.getElementById("rent-properties-container");
+    if (!container) return;
+    
+    container.innerHTML = "";
+
+    if (!list.length) {
+      container.innerHTML = `<div class="col-12"><p class="text-center">No properties found matching your criteria.</p></div>`;
+      return;
+    }
+
+    list.forEach(p => {
+        const deposit = p.Deposit
+        ? `₹${p.Deposit.toLocaleString()}`
+        : "Contact for Deposit";
+        // ImageUrl is now directly on the merged 'p' object
+        const imageSrc = p.ImageUrl ? `./assets/images/RentalImages/${p.ImageUrl}` : 'https://via.placeholder.com/300x200.png?text=Image+Not+Available';
+
+      container.innerHTML += `
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card property-card h-100">
+            <img 
+              src="${imageSrc}"
+              class="card-img-top"
+              alt="${p.PropertyName}"
+              style="height: 220px; object-fit: cover;"
+              onerror="this.onerror=null;this.src='https://via.placeholder.com/300x200.png?text=Image+Not+Available';"
+            >
+            <div class="card-body">
+              <h5 class="card-title">${p.PropertyName}</h5>
+              <p class="card-text text-muted small">
+                <i class="bi bi-geo-alt-fill me-2"></i>
+                ${p.AddressLine1 ?? "N/A"}, ${p.City ?? ""}
+              </p>
+              <div class="row text-center my-3">
+                <div class="col">
+                  <i class="bi bi-building"></i>
+                  <div>${p.BedRoom} BHK</div>
+                </div>
+                <div class="col">
+                  <i class="bi bi-bounding-box"></i>
+                  <div>${p.SBA} sq.ft</div>
+                </div>
+                <div class="col">
+                  <i class="bi bi-droplet"></i>
+                  <div>${p.Toilet} Baths</div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <h5 class="fw-bold mb-0">₹ ${p.Price.toLocaleString()} / mo</h5>
+                <a href="buy-details.html?id=${
+                  p.Id
+                }&type=rent" class="btn btn-primary">
+                  View Details
+                </a>
+              </div>
+               <div class="mt-2 small">
               <span class="badge bg-light text-dark">
                 Deposit: ${deposit}
               </span>
             </div>
+            </div>
           </div>
-
         </div>
-      </div>
-    `;
-  });
-}
-
-
-// ================= FILTER POPULATION =================
-function populateFilters(data) {
-  const locationSet = new Set();
-  const bhkSet = new Set();
-  const furnishingSet = new Set();
-
-  data.forEach(p => {
-    locationSet.add(p.AddressId);
-    bhkSet.add(p.BedRoom);
-    furnishingSet.add(p.FurnishingStatus);
-  });
-
-  fillSelect("locationFilter", [...locationSet]);
-  fillSelect("bhkFilter", [...bhkSet].sort());
-  fillSelect("furnishingFilter", [...furnishingSet]);
-}
-
-function fillSelect(id, values) {
-  const select = document.getElementById(id);
-
-  values.forEach(v => {
-    const opt = document.createElement("option");
-    opt.value = v;
-
-    if (id === "locationFilter") {
-      opt.textContent = formatLocation(v);
-    } else {
-      opt.textContent = v;
-    }
-
-    select.appendChild(opt);
-  });
-}
-
-
-// ================= APPLY FILTER BUTTON =================
-document.getElementById("apply-filters")
-  .addEventListener("click", applyFilters);
-
-function applyFilters() {
-  const location = document.getElementById("locationFilter").value;
-  const bhk = document.getElementById("bhkFilter").value;
-  const furnishing = document.getElementById("furnishingFilter").value;
-
-  const filtered = allProperties.filter(p =>
-    (!location || p.AddressId === location) &&
-    (!bhk || p.BedRoom == bhk) &&
-    (!furnishing || p.FurnishingStatus === furnishing)
-  );
-
-  renderRentProperties(filtered);
-}
-
-
-// ================= HELPER =================
-function formatLocation(addr) {
-  return addr.replace("addr-", "").replace(/-/g, " ").toUpperCase();
-}
+      `;
+    });
+  }
+});

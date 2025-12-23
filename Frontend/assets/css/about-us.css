@@ -1,19 +1,59 @@
-.about-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 60px 20px;
-    line-height: 1.8;
+/* about-us-v2.css */
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
 }
 
-/* headings */
-.about-container h2 {
-    text-align: center;
-    color: #002d72;
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
     font-weight: 700;
 }
 
-/* paragraphs */
-.about-container p {
-    color: #444;
-    text-align: justify;
+.hero-section {
+    position: relative;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center/cover;
+}
+
+.about-section, .mission-vision-section, .what-for-you-section, .team-section {
+    padding: 5rem 0;
+}
+
+.about-section .img-fluid {
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.mission-vision-section .card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mission-vision-section .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.what-for-you-section {
+    background-color: #fff;
+}
+
+.team-section .card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.team-section .card-img-top {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
