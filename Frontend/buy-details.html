@@ -16,35 +16,141 @@
 <body>
     <div id="navbar-container"></div>
 
-  <section class="container mt-5 pt-5">
+<!-- Property Details Section -->
+<section class="container mt-5 pt-5 mb-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <h2 id="property-title" class="mb-3 premium-heading"></h2>
+            <img id="property-image" class="img-fluid mb-4 rounded shadow-sm" alt="Property Image" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x500.png?text=Image+Not+Available';">
 
-  <h2 id="property-title"></h2>
+            <!-- Price/Rent Display -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 id="property-price-display" class="premium-heading text-gold"></h4>
+                <span id="property-deposit-display" class="badge bg-info text-dark" style="display: none;"></span>
+            </div>
 
-  <!-- Image -->
-  <img id="property-image" class="img-fluid mb-4 rounded" alt="Property Image" onerror="this.onerror=null;this.src='https://via.placeholder.com/600x400.png?text=Image+Not+Available';">
+            <h4 class="mt-4 mb-3">Description</h4>
+            <p id="property-description" class="lead text-muted"></p>
 
-  <!-- Description -->
-  <h4>Description</h4>
-  <p id="property-description"></p>
+            <h4 class="mt-4 mb-3">Property Overview</h4>
+            <div class="row g-3 mb-5">
+                <!-- Details will go here in Bootstrap cards/columns -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h6 class="card-title"><i class="bi bi-building me-2 text-primary"></i>Bedrooms</h6>
+                            <p class="card-text" id="property-bedrooms"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h6 class="card-title"><i class="bi bi-droplet me-2 text-primary"></i>Bathrooms</h6>
+                            <p class="card-text" id="property-bathrooms"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h6 class="card-title"><i class="bi bi-grid-1x2 me-2 text-primary"></i>Balcony</h6>
+                            <p class="card-text" id="property-balcony"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h6 class="card-title"><i class="bi bi-arrows-fullscreen me-2 text-primary"></i>SBA</h6>
+                            <p class="card-text" id="property-sba"></p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h6 class="card-title"><i class="bi bi-aspect-ratio me-2 text-primary"></i>Carpet Area</h6>
+                            <p class="card-text" id="property-carpet"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h6 class="card-title"><i class="bi bi-box-seam me-2 text-primary"></i>Furnishing</h6>
+                            <p class="card-text" id="property-furnishing"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h6 class="card-title"><i class="bi bi-compass me-2 text-primary"></i>Facing</h6>
+                            <p class="card-text" id="property-facing"></p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h6 class="card-title"><i class="bi bi-layers-half me-2 text-primary"></i>Floor</h6>
+                            <p class="card-text" id="property-floor"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h6 class="card-title"><i class="bi bi-car-front-fill me-2 text-primary"></i>Parking</h6>
+                            <p class="card-text" id="property-parking"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h6 class="card-title"><i class="bi bi-calendar-event me-2 text-primary"></i>Year Built</h6>
+                            <p class="card-text" id="property-year"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  <!-- Overview -->
-  <h4 class="mt-4">Overview</h4>
-  <table class="table table-bordered">
-    <tr><th>Property Name</th><td id="property-name"></td></tr>
-    <tr><th>Bedrooms</th><td id="property-bedrooms"></td></tr>
-    <tr><th>Bathrooms</th><td id="property-bathrooms"></td></tr>
-    <tr><th>Balcony</th><td id="property-balcony"></td></tr>
-    <tr><th>SBA</th><td id="property-sba"></td></tr>
-    <tr><th>Carpet Area</th><td id="property-carpet"></td></tr>
-    <tr><th>Furnishing</th><td id="property-furnishing"></td></tr>
-    <tr><th>Facing</th><td id="property-facing"></td></tr>
-    <tr><th>Floor</th><td id="property-floor"></td></tr>
-    <tr><th>Parking</th><td id="property-parking"></td></tr>
-    <tr><th>Year Built</th><td id="property-year"></td></tr>
-    <tr id="property-price-row"><th>Price/Rent</th><td id="property-price"></td></tr>
-    <tr id="property-deposit-row" style="display: none;"><th>Deposit</th><td id="property-deposit"></td></tr>
-  </table>
-
+        <div class="col-lg-4">
+            <!-- Inquiry Form Sidebar -->
+            <div class="card shadow-lg p-4 sticky-top" style="top: 100px;">
+                <h5 class="mb-4">Inquire About This Property</h5>
+                <form id="inquiryForm">
+                    <div class="mb-3">
+                        <label for="inquiryName" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="inquiryName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inquiryEmail" class="form-label">Your Email</label>
+                        <input type="email" class="form-control" id="inquiryEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inquiryPhone" class="form-label">Your Phone</label>
+                        <input type="tel" class="form-control" id="inquiryPhone">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inquiryMessage" class="form-label">Your Message</label>
+                        <textarea class="form-control" id="inquiryMessage" rows="4"></textarea>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="interestedCheckbox" checked>
+                        <label class="form-check-label" for="interestedCheckbox">
+                            I'm interested in this property
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Send Inquiry</button>
+                    <div id="formMessage" class="mt-3 text-center" style="display: none;"></div>
+                </form>
+            </div>
+        </div>
+    </div>
 </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

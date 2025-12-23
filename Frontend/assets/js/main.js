@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const configuration = document.getElementById("searchConfiguration").value;
         const propertyType = document.getElementById("searchPropertyType").value;
         const toilets = document.getElementById("searchToilet").value;
-        const balcony = document.getElementById("searchBalcony").value;
+        const balcony = document = document.getElementById("searchBalcony").value;
 
         const queryParams = new URLSearchParams();
         if(location) queryParams.append('location', location);
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }</h5>
                 <a href="buy-details.html?id=${
                   p.Id
-                }" class="btn btn-primary">
+                }&type=${listing ? listing.ListingType.toLowerCase() : 'sell'}" class="btn btn-primary">
                   View Details
                 </a>
               </div>
